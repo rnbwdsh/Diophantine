@@ -63,7 +63,7 @@ def nonzero(m):
             if m[i, j] != 0]
 
 
-def solve(A, b):
+def solve(A, b, return_basis=False):
     """
     Finds small solutions to systems of diophantine equations, A x = b, where A
     is a M x N matrix of coefficents, b is a M x 1 vector and x is the
@@ -110,6 +110,8 @@ def solve(A, b):
             raise NotImplementedError("Ax=B has unique solution in integers")
     else:
         solutions = []
+    if return_basis:
+        return solutions, basis
     return solutions
 
 
