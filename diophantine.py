@@ -40,7 +40,7 @@ from builtins import zip
 from builtins import next
 from builtins import range
 from copy import deepcopy
-from math import copysign, sqrt, log10, floor
+from math import sqrt, log10, floor
 try:
     from math import gcd  # Py >= 3.6
 except ImportError:
@@ -51,11 +51,6 @@ from itertools import chain, product
 
 class NoSolutionException(Exception):
     pass
-
-
-# Sign of a variable, which isn't included in math for some reason
-def sign(x):
-    return copysign(1, x) if x else 0
 
 
 def nonzero(m):
@@ -408,7 +403,7 @@ def addr(a, b, c, d):
 def comparer(a, b, c, d):
     """Assumes b>0 and d>0.  Returns -1, 0 or 1 according as a/b <,=,> c/d+ """
     assert b > 0 and d > 0
-    return sign(a * d - b * c)
+    return int(sign(a * d - b * c))
 
 
 def lcasvector(A, x):
